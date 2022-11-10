@@ -21,15 +21,28 @@ class FamilyStructure:
 
     def add_member(self, member):
         # fill this method and update the return
-        pass
+        # make sure it doesn't add duplicates
+        for people in self._members:
+            if (member["first_name"] == people["first_name"]):
+                return 'Family member already exists'
+        member["id"] = self._generateId
+        self._members.append(member)
+        return 'New family member has been added', 200
 
     def delete_member(self, id):
         # fill this method and update the return
-        pass
+        for people in self._members:
+            if (people["id"] == id):
+                self._members.remove(people)
+        return self._members
 
     def get_member(self, id):
         # fill this method and update the return
-        pass
+        for people in self._members:
+            if (people["id"] == id):
+                return people
+        return 'No such family member registered'
+
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):

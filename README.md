@@ -69,10 +69,7 @@ class Family:
         ## loop the list and delete the member with the given id
         pass
 
-    def update_member(self, id, member):
-        ## you have to implement this method
-        ## loop the list and replace the member with the given id
-        pass
+
 
     def get_member(self, id):
         ## you have to implement this method

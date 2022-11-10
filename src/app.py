@@ -38,6 +38,24 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+@app.route('/members', methods=['POST'])
+def addMember():
+    body = request.get_json()
+    print(body)
+    if body == None:
+        return "The request body is null", 400
+    if 'first_name' not in body:
+        return "Add the member's first name", 400
+    if 'age' not in body:
+        return "Add the member's age", 400
+    newMem = {
+        "first_name" : body["first_name"],
+        "last_name" : "Jackson",
+        "age" : body["age"],
+    }
+    add_member(newMem)
+    return
+
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
