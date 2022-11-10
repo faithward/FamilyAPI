@@ -22,6 +22,7 @@ class FamilyStructure:
     def add_member(self, member):
         # fill this method and update the return
         # make sure it doesn't add duplicates
+        print("Hello")
         for people in self._members:
             if (member["first_name"] == people["first_name"]):
                 return 'Family member already exists'
@@ -41,7 +42,7 @@ class FamilyStructure:
         for people in self._members:
             if (people["id"] == id):
                 return people
-        return 'No such family member registered'
+        return 'No such family member registered', 404
 
 
     # this method is done, it returns a list with all the family members
