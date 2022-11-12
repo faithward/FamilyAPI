@@ -11,9 +11,27 @@ from random import randint
 class FamilyStructure:
     def __init__(self, last_name):
         self.last_name = last_name
+        #self.id = self._generateId()
 
         # example list of members
-        self._members = []
+        self._members = [{
+            "first_name": "John",
+            "age" : 33,
+            "lucky_numbers" : [7, 13, 22],
+            "id" : self._generateId()
+        },
+        {
+            "first_name": "Jane",
+            "age" : 35,
+            "lucky_numbers" : [10, 14, 3],
+            "id" : self._generateId()
+        },
+        {
+            "first_name": "Jimmy",
+            "age" : 5,
+            "lucky_numbers" : [1],
+            "id" : self._generateId()
+        }]
 
     # read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
@@ -22,27 +40,28 @@ class FamilyStructure:
     def add_member(self, member):
         # fill this method and update the return
         # make sure it doesn't add duplicates
-        print("Hello")
         for people in self._members:
             if (member["first_name"] == people["first_name"]):
                 return 'Family member already exists'
-        member["id"] = self._generateId
         self._members.append(member)
-        return 'New family member has been added', 200
+        print("New family member has been added")
+        return ''
 
     def delete_member(self, id):
         # fill this method and update the return
         for people in self._members:
             if (people["id"] == id):
                 self._members.remove(people)
-        return self._members
+                print("Family member has been deleted")
+                return ''
+        return 'No such family member registered'
 
     def get_member(self, id):
         # fill this method and update the return
         for people in self._members:
             if (people["id"] == id):
                 return people
-        return 'No such family member registered', 404
+        return 'No such family member registered'
 
 
     # this method is done, it returns a list with all the family members
